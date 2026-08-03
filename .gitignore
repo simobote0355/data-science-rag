@@ -1,0 +1,5 @@
+venv/
+__pycache__/
+.env
+my_chroma_db/
+knowledge_base.json
