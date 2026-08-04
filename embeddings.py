@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer('intfloat/multilingual-e5-small')
+model = SentenceTransformer('intfloat/e5-small-v2')
 
 def get_embeddings(chunks):
     text = ['passage: ' + chunk['content'] for chunk in chunks]

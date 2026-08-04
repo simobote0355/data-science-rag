@@ -1,6 +1,6 @@
 from transformers import AutoTokenizer
 
-tokenizer = AutoTokenizer.from_pretrained("intfloat/multilingual-e5-small")
+tokenizer = AutoTokenizer.from_pretrained('intfloat/e5-small-v2')
 
 def get_tokens(texto):
     tokens = tokenizer.encode(texto)

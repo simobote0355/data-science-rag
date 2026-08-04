@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 def get_soup(url):
-    headers = {"User-Agent": "Mozilla/5.0 (educational RAG project)"}
+    headers = {"User-Agent": "Mozilla/5.0 (educational RAG project)", 
+               "Accept-Language": "en-US,en;q=0.9",}
     try:
         response = requests.get(url, headers=headers, timeout=15)
         response.raise_for_status()
