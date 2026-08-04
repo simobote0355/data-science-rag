@@ -7,7 +7,7 @@ def get_soup(url):
         response = requests.get(url, headers=headers, timeout=15)
         response.raise_for_status()
     except requests.RequestException as e:
-        print(f"Error al descargar {url}")
+        print(f"Error downloading {url}")
         raise e
 
     soup = BeautifulSoup(response.text, 'html.parser')

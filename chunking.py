@@ -22,7 +22,7 @@ def split_chunk(item, threshold=400):
 
         if actual_tokens + paragraph_tokens > threshold and actual_paragraph:
             content = '\n'.join(actual_paragraph)
-            sub_chunks.append({'title': f"{item['title']} (parte {aux})", 'content': content, 'source': item['source'], 'tokens': actual_tokens})
+            sub_chunks.append({'title': f"{item['title']} (part {aux})", 'content': content, 'source': item['source'], 'tokens': actual_tokens})
             aux += 1
             actual_paragraph = []
             actual_tokens = 0
@@ -32,6 +32,6 @@ def split_chunk(item, threshold=400):
         
     if actual_paragraph:
         content = '\n'.join(actual_paragraph)
-        sub_chunks.append({'title': f"{item['title']} (parte {aux})", 'content': content, 'source': item['source'], 'tokens': actual_tokens})
+        sub_chunks.append({'title': f"{item['title']} (part {aux})", 'content': content, 'source': item['source'], 'tokens': actual_tokens})
 
     return sub_chunks

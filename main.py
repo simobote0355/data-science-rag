@@ -52,28 +52,28 @@ def save_json(content, path='knowledge_base.json'):
         json.dump(content, f, ensure_ascii=False, indent=2)
 
 def main():
-    print('Iniciando web scraping...')
+    print('Starting web scraping...')
     content = load_sources()
 
-    print('Eliminando duplicados...')
+    print('Removing duplicates...')
     content = deduplicate(content)
 
-    print('Obteniendo tokens...')
+    print('Computing tokens...')
     content = add_tokens(content)
 
-    print('Disminuyendo tamaño de chunks grandes...')
+    print('Splitting large chunks...')
     content = chunking(content, threshold=400)
 
-    print('Calculando vector para cada chunk...')
+    print('Computing embeddings for each chunk...')
     content = get_embeddings(content)
 
-    print('Añadiendo ID a cada chunk...')
+    print('Adding ID to each chunk...')
     content = add_ids(content)
 
-    print('Escribiendo JSON...')
+    print('Writing JSON...')
     save_json(content)
 
-    print('Ingestión finalizada.')
+    print('Ingestion complete.')
 
 if __name__ == '__main__':
     main()

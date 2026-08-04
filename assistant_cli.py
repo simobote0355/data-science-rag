@@ -13,7 +13,7 @@ def ask_assistant(question, n_results=3):
     chunks = retrieve(question, n_results)
 
     if not chunks:
-        return 'No encontré información relevante en mi base de conocimiento para responder eso.'
+        return 'I couldn\'t find relevant information in my knowledge base to answer that.'
     
     context = get_context(chunks)
     answer = ask_groq(question, context)
@@ -22,8 +22,8 @@ def ask_assistant(question, n_results=3):
 
 if __name__ == '__main__':
     while True:
-        question = input('Pregunta o salir: ')
-        if question.lower() == 'salir':
+        question = input('Question (or exit): ')
+        if question.lower() == 'exit':
             break
         answer = ask_assistant(question)
         print(f'\n{answer}\n')

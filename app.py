@@ -6,8 +6,8 @@ from groq import Groq
 
 load_dotenv()
 
-st.set_page_config(page_title="Asistente de Data Science", page_icon="🤖")
-st.title("🤖 Asistente de Data Science")
+st.set_page_config(page_title="Data Science Assistant", page_icon="🤖")
+st.title("🤖 Data Science Assistant")
 
 @st.cache_resource
 def get_groq_client():
@@ -22,7 +22,7 @@ for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-if question := st.chat_input("Pregúntame sobre Data Science..."):
+if question := st.chat_input("Ask me about Data Science..."):
     st.session_state.messages.append({"role": "user", "content": question})
     with st.chat_message("user"):
         st.markdown(question)
@@ -37,11 +37,11 @@ if question := st.chat_input("Pregúntame sobre Data Science..."):
     message_system = {
         "role": "system",
         "content": (
-            "Eres un asistente experto en Data Science. "
-            "Responde basándote principalmente en el siguiente contexto recuperado. "
-            "Si el contexto no contiene información suficiente para responder, dilo explícitamente "
-            "en vez de inventar una respuesta.\n\n"
-            f"CONTEXTO:\n{context}"
+            "You are an expert Data Science assistant. "
+            "Answer based primarily on the following retrieved context. "
+            "If the context does not contain enough information to answer, say so explicitly "
+            "instead of making up an answer.\n\n"
+            f"CONTEXT:\n{context}"
         )
     }
 
@@ -63,9 +63,9 @@ if question := st.chat_input("Pregúntame sobre Data Science..."):
         
         text = st.write_stream(get_text(answers))
 
-    with st.expander("📚 Fuentes consultadas"):
+    with st.expander("📚 Sources consulted"):
         for r in results:
-            fuente = r['metadata'].get('source', 'desconocida')
+            fuente = r['metadata'].get('source', 'unknown')
             fragmento = r['content'][:200].strip()
             st.markdown(f"**{fuente}** (distancia: {r['distance']:.3f})")
             st.caption(f"{fragmento}...")
